@@ -25,7 +25,7 @@ public class IntroStage implements Screen {
 	
 	public IntroStage(GangOfSuits game) {
 		this.game = game;
-		player = new Player();
+		player = new Player(game);
 		batch = new SpriteBatch();
 		
 		background = new Sprite(new Texture(Gdx.files.internal("map.png")));
