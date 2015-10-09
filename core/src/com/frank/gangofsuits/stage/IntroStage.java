@@ -25,6 +25,7 @@ public class IntroStage implements Screen {
 	
 	public IntroStage(GangOfSuits game) {
 		this.game = game;
+		player = new Player();
 		batch = new SpriteBatch();
 		
 		background = new Sprite(new Texture(Gdx.files.internal("map.png")));
@@ -42,11 +43,13 @@ public class IntroStage implements Screen {
 	@Override
 	public void render(float delta) {	
 		camera.update();
+		player.update();
 		
 		batch.begin();
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.draw(background, 0, 0);
+		player.draw(batch);
 		
 		batch.end();
 	}
