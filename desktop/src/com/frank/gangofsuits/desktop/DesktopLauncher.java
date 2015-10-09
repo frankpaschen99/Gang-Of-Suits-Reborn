@@ -10,6 +10,5 @@ public class DesktopLauncher {
 		new LwjglApplication(new GangOfSuits(), config);
 		config.width = 800;
 		config.height = 600;
-		config.fullscreen = false;
 	}
 }
