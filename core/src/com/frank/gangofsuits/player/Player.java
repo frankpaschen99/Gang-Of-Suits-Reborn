@@ -64,7 +64,7 @@ public class Player {
 	public boolean isInvinsible() {
 		return invincible;
 	}
-	public void invincibility(boolean isInvincible) {
+	public void setInvincible(boolean isInvincible) {
 		this.invincible = isInvincible;
 	}
 }
