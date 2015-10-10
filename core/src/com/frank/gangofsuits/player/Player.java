@@ -15,6 +15,7 @@ public class Player {
 	private PlayerState state = PlayerState.ALIVE;
 	private int health = 100;
 	private GangOfSuits game;
+	private boolean invincible = false;
 	
 	public Player(GangOfSuits game) {
 		this.game = game;
@@ -25,10 +26,10 @@ public class Player {
 	}
 	
 	public void draw(SpriteBatch batch) {
-		//sprite.draw(batch);
+		sprite.draw(batch);
 	}
 	public void update() {
-		if (health <= 0) {
+		if (health <= 0 && !invincible) {
 			state = PlayerState.DEAD;
 			game.setScreen(new DeathScreen());
 		}
@@ -53,5 +54,11 @@ public class Player {
 	}
 	public void setPlayerState(PlayerState newState) {
 		this.state = newState;
+	}
+	public boolean isInvinsible() {
+		return invincible;
+	}
+	public void invincibility(boolean isInvincible) {
+		this.invincible = isInvincible;
 	}
 }
