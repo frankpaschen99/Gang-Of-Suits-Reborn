@@ -1,6 +1,7 @@
 package com.frank.gangofsuits.player;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -33,6 +34,26 @@ public class Player {
 			state = PlayerState.DEAD;
 			game.setScreen(new DeathScreen());
 		}
+
+		float playerSpeed = 10.0f;
+		float velocityX = 0.0f;
+		float velocityY = 0.0f;
+		
+		if(Gdx.input.isKeyPressed(Input.Keys.A)) 
+			velocityX -= Gdx.graphics.getDeltaTime() * playerSpeed;
+		if(Gdx.input.isKeyPressed(Input.Keys.D)) 
+			velocityX += Gdx.graphics.getDeltaTime() * playerSpeed;
+		if(Gdx.input.isKeyPressed(Input.Keys.W)) 
+			velocityY += Gdx.graphics.getDeltaTime() * playerSpeed;
+		if(Gdx.input.isKeyPressed(Input.Keys.S)) 
+			velocityY -= Gdx.graphics.getDeltaTime() * playerSpeed;
+
+		float length = (float) Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2)));
+		if (length > 0.0f) {
+			velocityX /= length;
+			velocityY /= length;
+		}
+	    sprite.translate(velocityX, velocityY);
 	}
 	public PlayerState getState() {
 		return state;
