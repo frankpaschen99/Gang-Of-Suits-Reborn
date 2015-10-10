@@ -28,7 +28,7 @@ public class IntroStage implements Screen {
 		player = new Player(game);
 		batch = new SpriteBatch();
 		
-		background = new Sprite(new Texture(Gdx.files.internal("map.png")));
+		background = new Sprite(new Texture(Gdx.files.internal("test.png")));
 		background.setSize(Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT);
 		
 		float aspectRatio = (float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getHeight();
@@ -44,7 +44,6 @@ public class IntroStage implements Screen {
 	public void render(float delta) {	
 		camera.update();
 		player.update();
-		
 		batch.begin();
 		
 		batch.setProjectionMatrix(camera.combined);
