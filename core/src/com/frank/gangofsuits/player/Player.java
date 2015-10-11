@@ -24,7 +24,7 @@ public class Player {
 		this.game = game;
 		
 		sprite = new Sprite(new Texture(Gdx.files.internal("spritesheets/char_sprite.png")));
-		sprite.setPosition(Constants.WORLD_WIDTH / 2, Constants.WORLD_HEIGHT / 2);
+		sprite.setPosition((Constants.WORLD_WIDTH / 2) - (sprite.getWidth() / 2), (Constants.WORLD_HEIGHT / 2) - (sprite.getHeight() / 2));
 		sprite.setRotation(0);
 	}
 	
