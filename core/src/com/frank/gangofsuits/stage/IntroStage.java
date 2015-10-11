@@ -21,14 +21,14 @@ public class IntroStage implements Screen {
 	private Sprite background;
 	
 	// Camera+Viewport
-	OrthographicCamera camera;
+	public static OrthographicCamera camera;
 	
 	public IntroStage(GangOfSuits game) {
 		this.game = game;
 		player = new Player(game);
 		batch = new SpriteBatch();
 		
-		background = new Sprite(new Texture(Gdx.files.internal("test.png")));
+		background = new Sprite(new Texture(Gdx.files.internal("environment/world2.png")));
 		background.setSize(Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT);
 		
 		float aspectRatio = (float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getHeight();

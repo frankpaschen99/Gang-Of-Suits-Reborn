@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.frank.gangofsuits.GangOfSuits;
 import com.frank.gangofsuits.stage.DeathScreen;
+import com.frank.gangofsuits.stage.IntroStage;
+import com.frank.gangofsuits.utilities.Constants;
 
 enum PlayerState {
 	ALIVE, DEAD
@@ -21,8 +23,8 @@ public class Player {
 	public Player(GangOfSuits game) {
 		this.game = game;
 		
-		sprite = new Sprite(new Texture(Gdx.files.internal("char_sprite.png")));
-		sprite.setPosition(0, 0);
+		sprite = new Sprite(new Texture(Gdx.files.internal("spritesheets/char_sprite.png")));
+		sprite.setPosition(Constants.WORLD_WIDTH / 2, Constants.WORLD_HEIGHT / 2);
 		sprite.setRotation(0);
 	}
 	
@@ -54,6 +56,7 @@ public class Player {
 			velocityY /= length;
 		}
 	    sprite.translate(velocityX, velocityY);
+	    IntroStage.camera.translate(velocityX, velocityY);
 	}
 	public PlayerState getState() {
 		return state;
