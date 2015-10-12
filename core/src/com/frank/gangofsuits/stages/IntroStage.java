@@ -4,10 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -19,7 +16,8 @@ public class IntroStage implements Screen {
 	private Player player;
 	
 	private GangOfSuits game;
-
+	private Batch batch;
+	
 	public static OrthographicCamera camera;
 	private OrthogonalTiledMapRenderer renderer;
 	private TiledMap map;
@@ -27,10 +25,9 @@ public class IntroStage implements Screen {
 	public IntroStage(GangOfSuits game) {
 		this.game = game;
 		player = new Player(game);
-		
 		map = new TmxMapLoader().load("environment/tmx/desert.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1);
-		
+		batch = renderer.getBatch();
 		camera = new OrthographicCamera(Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT);
 		camera.translate(camera.viewportWidth / 2, camera.viewportHeight / 2);
 		camera.setToOrtho(false, Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT);
@@ -45,13 +42,11 @@ public class IntroStage implements Screen {
 		Gdx.gl.glClearColor( 0, 0, 0, 1 );
 	    Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
 	    
+	    player.update();
 		camera.update();
-		player.update();
 		
 		renderer.setView(camera);
 		renderer.render();
-		
-		Batch batch = renderer.getBatch();
 		
 		batch.begin();
 		batch.setProjectionMatrix(camera.combined);
