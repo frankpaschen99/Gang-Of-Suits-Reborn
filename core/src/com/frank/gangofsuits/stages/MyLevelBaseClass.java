@@ -45,7 +45,7 @@ public class MyLevelBaseClass implements Screen {
 		batch.setTransformMatrix(camera.combined);
 		
 		// Drawing code here
-		
+
 		batch.end();
 	}
 

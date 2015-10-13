@@ -22,6 +22,9 @@ public class IntroStage implements Screen {
 	private OrthogonalTiledMapRenderer renderer;
 	private TiledMap map;
 	
+	public TiledMap getMap() {
+		return map;
+	}
 	public IntroStage(GangOfSuits game) {
 		this.game = game;
 		player = new Player(game);
