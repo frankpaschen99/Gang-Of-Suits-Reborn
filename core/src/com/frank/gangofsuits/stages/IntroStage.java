@@ -1,6 +1,7 @@
 package com.frank.gangofsuits.stages;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.frank.gangofsuits.GangOfSuits;
 import com.frank.gangofsuits.entities.Player;
 import com.frank.gangofsuits.utilities.Constants;
@@ -44,8 +46,8 @@ public class IntroStage implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor( 0, 0, 0, 1 );
 	    Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
-	    
-	    player.update();
+
+		player.update();
 		camera.update();
 		
 		renderer.setView(camera);

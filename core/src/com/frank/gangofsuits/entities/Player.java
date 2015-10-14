@@ -58,7 +58,7 @@ public class Player {
 			velocityX /= length;
 			velocityY /= length;
 		}
-	    //sprite.translate(velocityX, velocityY);
+		/* Problem lies here (Issue #1) */
 	    IntroStage.camera.translate(velocityX, velocityY);
 	    Vector3 camPosition = IntroStage.camera.position;
 	    sprite.setPosition(camPosition.x, camPosition.y);
