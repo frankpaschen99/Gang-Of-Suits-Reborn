@@ -39,28 +39,41 @@ public class Player {
 			game.setScreen(new DeathScreen());
 		}
 
-		float playerSpeed = 10.0f;
-		float velocityX = 0.0f;
-		float velocityY = 0.0f;
+		Vector3 velocity = new Vector3();
+		float walkSpeed = 10;
 		
-		if(Gdx.input.isKeyPressed(Input.Keys.A)) 
-			velocityX -= Gdx.graphics.getDeltaTime() * playerSpeed;
-		if(Gdx.input.isKeyPressed(Input.Keys.D)) 
-			velocityX += Gdx.graphics.getDeltaTime() * playerSpeed;
-		if(Gdx.input.isKeyPressed(Input.Keys.W)) 
-			velocityY += Gdx.graphics.getDeltaTime() * playerSpeed;
-		if(Gdx.input.isKeyPressed(Input.Keys.S)) 
-			velocityY -= Gdx.graphics.getDeltaTime() * playerSpeed;
-
-		float length = (float) Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2)));
-		if (length > 0.0f) {
-			velocityX /= length;
-			velocityY /= length;
+		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+			Vector3 velUp = new Vector3();
+			velUp.y = 1;
+			velocity.add(velUp);
 		}
-		// Issue #1 still not fixed
+		else if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+			Vector3 velDown = new Vector3();
+			velDown.y = -1;
+			velocity.add(velDown);
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+			Vector3 velLeft = new Vector3();
+			velLeft.x = -1;
+			velocity.add(velLeft);
+		}
+		else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
+			Vector3 velRight = new Vector3();
+			velRight.x = 1;
+			velocity.add(velRight);
+		}
+		
+		float length = (float) Math.sqrt((Math.pow(velocity.x, 2)) + (Math.pow(velocity.y, 2)));
+
+		if (length > 0.001) {
+			velocity.nor();
+			IntroStage.camera.translate(velocity.x, velocity.y);
+		    sprite.translate(velocity.x, velocity.y);
+		}
+		/* Issue #1 still not fixed
 	    IntroStage.camera.translate(velocityX, velocityY);
 	    Vector3 camPosition = IntroStage.camera.position;
-	    sprite.setPosition(camPosition.x, camPosition.y);
+	    sprite.setPosition(camPosition.x, camPosition.y);*/
 	}
 	public PlayerState getState() {
 		return state;
