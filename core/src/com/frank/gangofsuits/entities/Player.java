@@ -57,9 +57,8 @@ public class Player {
 			velocityX /= length;
 			velocityY /= length;
 		}
-
-		// Only round the x value, rounding the y value will make diagonal movement choppy
-	    IntroStage.camera.translate(Math.round(velocityX), velocityY);
+		// Issue #1 still not fixed
+	    IntroStage.camera.translate(velocityX, velocityY);
 	    Vector3 camPosition = IntroStage.camera.position;
 	    sprite.setPosition(camPosition.x, camPosition.y);
 	}

@@ -28,7 +28,7 @@ public class IntroStage implements Screen {
 	public IntroStage(GangOfSuits game) {
 		// this.game = game;
 		player = new Player(game);
-		map = new TmxMapLoader().load("environment/tmx/desert.tmx");
+		map = new TmxMapLoader().load("maps/desert/desert.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1);
 		batch = renderer.getBatch();
 		camera = new OrthographicCamera(Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT);
