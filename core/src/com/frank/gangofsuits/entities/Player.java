@@ -40,7 +40,6 @@ public class Player {
 		}
 
 		Vector3 velocity = new Vector3();
-		float walkSpeed = 10;
 		
 		if (Gdx.input.isKeyPressed(Input.Keys.W)) {
 			Vector3 velUp = new Vector3();
