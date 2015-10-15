@@ -70,10 +70,6 @@ public class Player {
 			IntroStage.camera.translate(velocity.x, velocity.y);
 		    sprite.translate(velocity.x, velocity.y);
 		}
-		/* Issue #1 still not fixed
-	    IntroStage.camera.translate(velocityX, velocityY);
-	    Vector3 camPosition = IntroStage.camera.position;
-	    sprite.setPosition(camPosition.x, camPosition.y);*/
 	}
 	public PlayerState getState() {
 		return state;
