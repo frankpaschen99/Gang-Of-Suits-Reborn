@@ -1,7 +1,6 @@
 package com.frank.gangofsuits.stages;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.frank.gangofsuits.GangOfSuits;
 import com.frank.gangofsuits.entities.Player;
 import com.frank.gangofsuits.utilities.Constants;
@@ -17,7 +15,7 @@ import com.frank.gangofsuits.utilities.Constants;
 public class IntroStage implements Screen {
 	private Player player;
 	
-	private GangOfSuits game;
+	// private GangOfSuits game;			Not used yet, but will be
 	private Batch batch;
 	
 	public static OrthographicCamera camera;
@@ -28,7 +26,7 @@ public class IntroStage implements Screen {
 		return map;
 	}
 	public IntroStage(GangOfSuits game) {
-		this.game = game;
+		// this.game = game;
 		player = new Player(game);
 		map = new TmxMapLoader().load("environment/tmx/desert.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1);

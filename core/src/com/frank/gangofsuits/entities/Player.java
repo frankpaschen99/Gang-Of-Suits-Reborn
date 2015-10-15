@@ -5,7 +5,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.frank.gangofsuits.GangOfSuits;
@@ -58,8 +57,9 @@ public class Player {
 			velocityX /= length;
 			velocityY /= length;
 		}
-		/* Problem lies here (Issue #1) */
-	    IntroStage.camera.translate(velocityX, velocityY);
+
+		// Only round the x value, rounding the y value will make diagonal movement choppy
+	    IntroStage.camera.translate(Math.round(velocityX), velocityY);
 	    Vector3 camPosition = IntroStage.camera.position;
 	    sprite.setPosition(camPosition.x, camPosition.y);
 	}
