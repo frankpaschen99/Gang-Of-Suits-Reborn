@@ -52,7 +52,7 @@ public class Player {
 			velDown.y = -1;
 			velocity.add(velDown);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+		else if (Gdx.input.isKeyPressed(Input.Keys.A)) {
 			Vector3 velLeft = new Vector3();
 			velLeft.x = -1;
 			velocity.add(velLeft);
