@@ -1,5 +1,7 @@
 package com.frank.gangofsuits.entities;
 
+import java.math.BigDecimal;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
@@ -8,20 +10,19 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.frank.gangofsuits.GangOfSuits;
-import com.frank.gangofsuits.stages.DeathScreen;
 import com.frank.gangofsuits.stages.IntroStage;
 import com.frank.gangofsuits.utilities.Constants;
 
 enum PlayerState {
-	ALIVE, DEAD
+	ALIVE, DEAD, INVINCIBLE
 }
 public class Player {
 	private Sprite sprite;
 	private PlayerState state = PlayerState.ALIVE;
-	private int health = 100;
 	private GangOfSuits game;
-	private boolean invincible = false;
-	
+	private int health = 100 / Constants.DIFFICULTY;
+	private BigDecimal cash = new BigDecimal(5000);
+
 	public Player(GangOfSuits game) {
 		this.game = game;
 		
@@ -34,9 +35,8 @@ public class Player {
 		batch.draw(sprite, sprite.getX(), sprite.getY());
 	}
 	public void update() {
-		if (health <= 0 && !invincible) {
+		if (health <= 0 && state != PlayerState.INVINCIBLE) {
 			state = PlayerState.DEAD;
-			game.setScreen(new DeathScreen());
 		}
 
 		Vector3 velocity = new Vector3();
@@ -70,19 +70,20 @@ public class Player {
 		    sprite.translate(velocity.x, velocity.y);
 		}
 	}
+	// Getters & Setters
 	public PlayerState getState() {
 		return state;
 	}
 	public void setPlayerState(PlayerState newState) {
 		this.state = newState;
 	}
-	public boolean isInvinsible() {
-		return invincible;
-	}
-	public void setInvincible(boolean isInvincible) {
-		this.invincible = isInvincible;
-	}
 	public Vector2 getPosition() {
 		return new Vector2(sprite.getX(), sprite.getY());
+	}
+	public BigDecimal getCash() {
+		return cash;
+	}
+	public void setCash(int newCash) {
+		this.cash = new BigDecimal(newCash);
 	}
 }
