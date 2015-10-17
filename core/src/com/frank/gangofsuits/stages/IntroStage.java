@@ -15,7 +15,7 @@ import com.frank.gangofsuits.utilities.Constants;
 public class IntroStage implements Screen {
 	private Player player;
 	
-	// private GangOfSuits game;			Not used yet, but will be
+	private GangOfSuits game;
 	private Batch batch;
 	
 	public static OrthographicCamera camera;
@@ -26,7 +26,7 @@ public class IntroStage implements Screen {
 		return map;
 	}
 	public IntroStage(GangOfSuits game) {
-		// this.game = game;
+		this.game = game;
 		player = new Player(game);
 		map = new TmxMapLoader().load("maps/desert/desert.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1);
