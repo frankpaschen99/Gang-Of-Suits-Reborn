@@ -7,3 +7,4 @@ build.gradle
 gradle.properties
 gradlew
 gradlew.bat
+test.txt
