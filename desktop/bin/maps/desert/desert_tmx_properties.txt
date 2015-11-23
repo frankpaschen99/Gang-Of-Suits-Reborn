@@ -1,7 +1,0 @@
-desert.tmx
-
-Orientation: Orthogonal
-Size: 40 tiles^2
-Tile Size: 32 units^2
-Layer Format:  Base64 (zlib compression)
-Render Order: Right Down
