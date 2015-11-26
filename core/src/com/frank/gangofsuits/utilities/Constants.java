@@ -5,4 +5,5 @@ public final class Constants {
 	public static final float WORLD_WIDTH = 340;
 	public static final float WORLD_HEIGHT = 225;
 	public static final int DIFFICULTY = 1;	// 1 = normal, 2 = hard
+	public static final int OBJECT_LAYER_ID = 0;
 }

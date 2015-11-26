@@ -7,6 +7,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.frank.gangofsuits.GangOfSuits;
@@ -62,6 +63,10 @@ public class Player {
 			velocity.add(velRight);
 		}
 		
+		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+			// pause menu
+		}
+		
 		float length = (float) Math.sqrt((Math.pow(velocity.x, 2)) + (Math.pow(velocity.y, 2)));
 
 		if (length > 0.001) {
@@ -85,5 +90,9 @@ public class Player {
 	}
 	public void setCash(int newCash) {
 		this.cash = new BigDecimal(newCash);
+	}
+
+	public Rectangle getRectangle() {
+		return new Rectangle(sprite.getBoundingRectangle());
 	}
 }
