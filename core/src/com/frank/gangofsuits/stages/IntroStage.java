@@ -45,6 +45,8 @@ public class IntroStage implements Screen {
 		camera.translate(camera.viewportWidth / 2, camera.viewportHeight / 2);
 		camera.setToOrtho(false, Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT);
 		camera.update();	
+		
+		printLayerInfo(collisionObjectLayer);
 	}
 	@Override
 	public void show() {
@@ -103,6 +105,9 @@ public class IntroStage implements Screen {
 	@Override
 	public void dispose() {
 		
+	}
+	private void printLayerInfo(TiledMapTileLayer t) {
+		System.out.println("TiledMapTileLayer Information" + '\n' + "Name: " + t.getName() + '\n' + "Width: " + t.getWidth() + '\n' + "Height: " + t.getHeight());
 	}
 	
 }
