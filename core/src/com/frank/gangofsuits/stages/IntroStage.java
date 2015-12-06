@@ -14,25 +14,27 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.frank.gangofsuits.GangOfSuits;
+import com.frank.gangofsuits.entities.NPC;
 import com.frank.gangofsuits.entities.Player;
 import com.frank.gangofsuits.utilities.Constants;
 
 public class IntroStage implements Screen {
+	/* Player */
 	private Player player;
 	
+	/* Game/Rendering */
 	private GangOfSuits game;
 	private Batch batch;
 	
+	/* Camera */
 	public static OrthographicCamera camera;
+	
+	/* Tiled Map */
 	private OrthogonalTiledMapRenderer renderer;
 	private TiledMap map;
 	private TiledMapTileLayer collisionObjectLayer;
 	private MapObjects objects;
-	
-	public TiledMap getMap() {
-		return map;
-		
-	}
+
 	public IntroStage(GangOfSuits game) {
 		this.game = game;
 		player = new Player(game);
@@ -46,7 +48,8 @@ public class IntroStage implements Screen {
 		camera.setToOrtho(false, Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT);
 		camera.update();	
 		
-		printLayerInfo(collisionObjectLayer);
+		// Remove later
+		// printLayerInfo(collisionObjectLayer);
 	}
 	@Override
 	public void show() {
@@ -56,34 +59,31 @@ public class IntroStage implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClearColor( 0, 0, 0, 1 );
 	    Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT );
-
-	    /* 
-	     * For each RectangleMapObject in the TiledMapTileLayer's collection of objects, test if the rectangle
-	     * of the tiled object overlaps our player's.
-	     * 
-	     * This loop doesn't run yet because the Tiled map isn't divided into layers
-	     */
-	    
+ 
+	     /* For each RectangleMapObject in the TiledMapTileLayer's collection of objects, test if the rectangle
+	        of the tiled object overlaps our player's. */
 		for (RectangleMapObject rectangleObject : objects.getByType(RectangleMapObject.class)) {
 		    Rectangle rectangle = rectangleObject.getRectangle();
 		    
-		    if (Intersector.overlaps(rectangle, player.getRectangle())) {
+		    if (Intersector.overlaps(rectangle, player.getBoundingRect())) {
 		        // Handle collision
-		    	System.out.println('(' + player.getRectangle().x + ", " + player.getRectangle().y + ')');
+		    	System.out.println('(' + player.getBoundingRect().x + ", " + player.getBoundingRect().y + ')');
 		    }
 		}
 	    
+		// Update everything
 		player.update();
 		camera.update();
 		
 		renderer.setView(camera);
 		renderer.render();
-		
+
+		// Render everything in the scene
 		batch.begin();
 		batch.setProjectionMatrix(camera.combined);
 		
 		player.draw(batch);
-		
+
 		batch.end();
 	}
 	@Override
@@ -106,8 +106,8 @@ public class IntroStage implements Screen {
 	public void dispose() {
 		
 	}
+	// Debug
 	private void printLayerInfo(TiledMapTileLayer t) {
 		System.out.println("TiledMapTileLayer Information" + '\n' + "Name: " + t.getName() + '\n' + "Width: " + t.getWidth() + '\n' + "Height: " + t.getHeight());
 	}
-	
 }

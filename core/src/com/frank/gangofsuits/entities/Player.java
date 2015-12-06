@@ -13,10 +13,8 @@ import com.badlogic.gdx.math.Vector3;
 import com.frank.gangofsuits.GangOfSuits;
 import com.frank.gangofsuits.stages.IntroStage;
 import com.frank.gangofsuits.utilities.Constants;
+import com.frank.gangofsuits.utilities.PlayerState;
 
-enum PlayerState {
-	ALIVE, DEAD, INVINCIBLE
-}
 public class Player {
 	private Sprite sprite;
 	private PlayerState state = PlayerState.ALIVE;
@@ -31,7 +29,6 @@ public class Player {
 		sprite.setPosition((Constants.WORLD_WIDTH / 2) - (sprite.getWidth() / 2), (Constants.WORLD_HEIGHT / 2) - (sprite.getHeight() / 2));
 		sprite.setRotation(0);
 	}
-	
 	public void draw(Batch batch) {
 		batch.draw(sprite, sprite.getX(), sprite.getY());
 	}
@@ -91,8 +88,7 @@ public class Player {
 	public void setCash(int newCash) {
 		this.cash = new BigDecimal(newCash);
 	}
-
-	public Rectangle getRectangle() {
-		return new Rectangle(sprite.getBoundingRectangle());
+	public Rectangle getBoundingRect() {
+		return sprite.getBoundingRectangle();
 	}
 }
